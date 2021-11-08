@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'anandutr1995@gmail.com'
 
   spec.summary       = 'Change the package name in android project'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-change_domain"
+  spec.homepage      = "https://github.com/Anandu-tr/fastlane-plugin-change_domain"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)

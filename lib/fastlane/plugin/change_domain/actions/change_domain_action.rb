@@ -48,7 +48,6 @@ module Fastlane
             end
 
             Bundler.with_clean_env do
-              sh "find #{path}#{sourcesPath} -name '*.kt' -type f -exec sed -i '' 's/#{originalPackageName}/#{packageName}/' {} \\;"
               sh "find #{path}#{gradlePath} -name 'build.gradle' -type f -exec sed -i '' 's/#{originalPackageName}/#{packageName}/' {} \\;"
             end
           end
