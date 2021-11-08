@@ -48,10 +48,7 @@ module Fastlane
             end
 
             Bundler.with_clean_env do
-<<<<<<< HEAD
-=======
               
->>>>>>> a617dce8e2fbd08230230600ee6e7b87e0e49a90
               sh "find #{path}#{gradlePath} -name 'build.gradle' -type f -exec sed -i '' 's/#{originalPackageName}/#{packageName}/' {} \\;"
             end
           end
@@ -105,3 +102,4 @@ module Fastlane
     end
   end
 end
+
