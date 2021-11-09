@@ -49,7 +49,7 @@ module Fastlane
 
             Bundler.with_clean_env do
               
-              sh "find #{path}#{gradlePath} -name 'build.gradle' -type f -exec sed -i '' 's/#{originalPackageName}/#{packageName}/' {} \\;"
+              sh "find #{path}#{gradlePath} -name 'build.gradle' -type f -exec sed -i -e 's/#{originalPackageName}/#{packageName}/' {} \;"
             end
           end
 
