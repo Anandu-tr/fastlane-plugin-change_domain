@@ -34,11 +34,13 @@ module Fastlane
               gradlePath = "/app"
               new_folder_path = "#{path}#{sourcesPath}/main/java/#{new_folder}"
               java_sources = Dir.glob("#{path}#{sourcesPath}/main/java/#{folder}/*.java")
+              kotlin_source = Dir.glob("#{path}#{sourcesPath}/main/java/#{folder}/*.kt")
             elsif File.exist?("#{path}/src/#{folder}")
               sourcesPath = "/src"
               gradlePath = "/."
               new_folder_path = "#{path}#{sourcesPath}/#{new_folder}"
               java_sources = Dir.glob("#{path}#{sourcesPath}/#{folder}/*.java")
+              kotlin_source = Dir.glob("#{path}#{sourcesPath}/#{folder}/*.kt")
             end
           
             FileUtils::mkdir_p new_folder_path
@@ -46,10 +48,14 @@ module Fastlane
             java_sources.each do |file|
               FileUtils.mv file, new_folder_path
             end
+            
+            kotlin_sources.each do |file|
+              FileUtils.mv file, new_folder_path
+            end
 
              Bundler.with_clean_env do
-             	sh "find #{path}#{sourcesPath} -name '*.java' -type f -exec sed -i '' 's/#{originalPackageName}/#{packageName}/' {} \\;"
-             	sh "find #{path}#{sourcesPath} -name '*.kt' -type f -exec sed -i '' 's/#{originalPackageName}/#{packageName}/' {} \\;"
+             	sh "find #{path}#{sourcesPath} -name '*.java' -type f -exec sed -i -e 's/#{originalPackageName}/#{packageName}/' {} +;"
+             	sh "find #{path}#{sourcesPath} -name '*.kt' -type f -exec sed -i -e 's/#{originalPackageName}/#{packageName}/' {} +;"
              	sh "find #{path}#{gradlePath} -name 'build.gradle' -type f -exec sed -i -e 's/#{originalPackageName}/#{packageName}/' {} +"
             end
           end
