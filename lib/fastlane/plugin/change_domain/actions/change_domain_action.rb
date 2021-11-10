@@ -47,10 +47,10 @@ module Fastlane
               FileUtils.mv file, new_folder_path
             end
 
-            # Bundler.with_clean_env do
+             Bundler.with_clean_env do
               
-            #   sh "find #{path}#{gradlePath} -name 'build.gradle' -type f -exec sed -i -e 's/#{originalPackageName}/#{packageName}/' {} +"
-            # end
+               sh "find #{path}#{gradlePath} -name 'build.gradle' -type f -exec sed -i -e 's/#{originalPackageName}/#{packageName}/' {} +"
+            end
           end
 
           UI.message("#{originalPackageName} successfully updated to #{packageName}")
