@@ -33,14 +33,14 @@ module Fastlane
               sourcesPath = "/app/src"
               gradlePath = "/app"
               new_folder_path = "#{path}#{sourcesPath}/main/java/#{new_folder}"
-              java_sources = Dir.glob("#{path}#{sourcesPath}/main/java/#{folder}/*.java")
-              kotlin_sources = Dir.glob("#{path}#{sourcesPath}/main/java/#{folder}/*.kt")
+              java_sources = Dir.glob("#{path}#{sourcesPath}/main/java/#{folder}/**.java")
+              kotlin_sources = Dir.glob("#{path}#{sourcesPath}/main/java/#{folder}/**.kt")
             elsif File.exist?("#{path}/src/#{folder}")
               sourcesPath = "/src"
               gradlePath = "/."
               new_folder_path = "#{path}#{sourcesPath}/#{new_folder}"
-              java_sources = Dir.glob("#{path}#{sourcesPath}/#{folder}/*.java")
-              kotlin_sources = Dir.glob("#{path}#{sourcesPath}/#{folder}/*.kt")
+              java_sources = Dir.glob("#{path}#{sourcesPath}/#{folder}/**.java")
+              kotlin_sources = Dir.glob("#{path}#{sourcesPath}/#{folder}/**.kt")
             end
           
             FileUtils::mkdir_p new_folder_path
